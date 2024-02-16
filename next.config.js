@@ -8,7 +8,7 @@ const nextConfig = {
         destination: '/items/:id',
         permanent: true,
       },
-    ];
+    ]
   },
   images: {
     remotePatterns: [
@@ -20,6 +20,6 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

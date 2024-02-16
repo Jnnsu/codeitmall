@@ -82,7 +82,8 @@ export default function Product() {
                   <tr>
                     <th>좋아요</th>
                     <td className={styles.like}>
-                      ♥{product.likeCount.toLocaleString()}
+                      ♥
+                      {product.likeCount.toLocaleString()}
                     </td>
                   </tr>
                 </tbody>

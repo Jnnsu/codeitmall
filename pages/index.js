@@ -26,5 +26,5 @@ export default function Home() {
       <SearchForm />
       <ProductList className={styles.productList} products={products} />
     </>
-  );
+  )
 }
