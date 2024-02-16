@@ -1,24 +1,30 @@
+import { useEffect, useState } from 'react';
+import ProductList from '@/components/ProductList';
+import SearchForm from '@/components/SearchForm';
+import axios from '@/lib/axios';
 import styles from '@/styles/Home.module.css';
-import Link from 'next/link';
+import Head from 'next/head';
 
 export default function Home() {
-    return (
-        <>
-            <h1>Coditmall</h1>
-            <ul>
-                <li>
-                    <Link href="/products/1">첫 번쨰 상품</Link>
-                </li>
-                <li>
-                    <Link href="/products/2">두 번쨰 상품</Link>
-                </li>
-                <li>
-                    <Link href="/products/3">세 번쨰 상품</Link>
-                </li>
-                <li>
-                    <Link href="https://codeit.kr">코드잇</Link>
-                </li>
-            </ul>
-        </>
-    );
+  const [products, setProducts] = useState([]);
+
+  async function getProducts() {
+    const res = await axios.get('/products');
+    const nextProducts = res.data.results;
+    setProducts(nextProducts);
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Codeitmall</title>
+      </Head>
+      <SearchForm />
+      <ProductList className={styles.productList} products={products} />
+    </>
+  );
 }
